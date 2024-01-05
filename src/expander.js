@@ -11,7 +11,7 @@ const makeExpander = ({ findContractions, getKey, limit, loader, setter = defaul
 		async function visit(target, { depth = 1, stack = [] } = {}) {
 			if (!target) return
 
-			if (stack.find(([stackNode]) => Object.is(stackNode, target))) return
+			if (stack.find(([stackTarget]) => Object.is(stackTarget, target))) return
 
 			const key = getKey(target)
 
