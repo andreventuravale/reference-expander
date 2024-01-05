@@ -236,8 +236,8 @@ test('custom setter', async () => {
 		getKey,
 		limit: 10,
 		loader,
-		setter: (target, path, expansion, defaultSetter) =>
-			defaultSetter(target, `${path}.obj`, expansion, defaultSetter)
+		setter: ({ target, path, expansion, defaultSetter }) =>
+			defaultSetter({ target, path: `${path}.obj`, expansion, defaultSetter })
 	}).expand(input)
 
 	expect(input).toEqual({
