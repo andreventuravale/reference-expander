@@ -20,7 +20,7 @@
 	},
 	"files": [
 		"./index.*",
-		"./esm.js"
+		"./esm.*"
 	],
 	"keywords": [
 		"reference expansion"
