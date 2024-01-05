@@ -1,6 +1,6 @@
 const { isArray, isObject, isPlainObject } = require('lodash')
 
-const makeContractionFinder = ({ isContracted, isExpanded }) => {
+const makeContractionFinder = ({ isContraction, isExpansion }) => {
 	const find = function (input, { limit = 1 } = {}) {
 		const result = []
 
@@ -18,14 +18,14 @@ const makeContractionFinder = ({ isContracted, isExpanded }) => {
 			} else if (node !== null && isObject(node) && isPlainObject(node)) {
 				const topLevel = Object.is(node, input)
 
-				const contracted = isContracted(node)
+				const contracted = isContraction(node)
 
 				if (contracted) {
 					if (!topLevel) {
 						result.push([path.join(''), node, depth])
 					}
 				} else {
-					const expanded = !contracted && isExpanded(node)
+					const expanded = !contracted && isExpansion(node)
 
 					Object.entries(node).forEach(([k, v]) => {
 						visit(v, {

@@ -18,13 +18,13 @@ const expandedSchema = z.object({
 	uid: z.string()
 })
 
-const isContracted = (v) => contractedSchema.safeParse(v).success
+const isContraction = (v) => contractedSchema.safeParse(v).success
 
-const isExpanded = (v) => expandedSchema.safeParse(v).success
+const isExpansion = (v) => expandedSchema.safeParse(v).success
 
 const getKey = (v) => expandedSchema.parse(v)
 
-const contractionFinder = makeContractionFinder({ isContracted, isExpanded })
+const contractionFinder = makeContractionFinder({ isContraction, isExpansion })
 
 const findContractions = (node, { limit }) => contractionFinder.find(node, { limit })
 

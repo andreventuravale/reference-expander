@@ -18,9 +18,9 @@ const expandedSchema = z.object({
 	uid: z.string()
 })
 
-const isContracted = (v) => contractedSchema.safeParse(v).success
+const isContraction = (v) => contractedSchema.safeParse(v).success
 
-const isExpanded = (v) => expandedSchema.safeParse(v).success
+const isExpansion = (v) => expandedSchema.safeParse(v).success
 
 test('refs must match exactly', () => {
 	const input = {
@@ -36,8 +36,8 @@ test('refs must match exactly', () => {
 	}
 
 	let contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find(input)
 
 	expect(contractedRefs).toEqual([
@@ -54,8 +54,8 @@ test('refs must match exactly', () => {
 	unset(input, 'almostExactRef.foo')
 
 	contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find(input)
 
 	expect(contractedRefs).toEqual([
@@ -80,8 +80,8 @@ test('refs must match exactly', () => {
 
 test('when the top-level looks like a contracted ref ( it can not be )', () => {
 	const contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find({
 		_content_type_uid: 'bar',
 		uid: '123'
@@ -92,8 +92,8 @@ test('when the top-level looks like a contracted ref ( it can not be )', () => {
 
 test('top-level => object', () => {
 	const contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find({
 		foo: {
 			_content_type_uid: 'bar',
@@ -115,8 +115,8 @@ test('top-level => object', () => {
 
 test('top-level => object => array [ ref ]', () => {
 	const contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find({
 		foo: [
 			{
@@ -140,8 +140,8 @@ test('top-level => object => array [ ref ]', () => {
 
 test('top-level => object => array [ ?, ref ]', () => {
 	const contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find({
 		foo: [
 			'bar',
@@ -166,8 +166,8 @@ test('top-level => object => array [ ?, ref ]', () => {
 
 test('top-level => object => array [ ?, ref, ?, ref, ?, ref, ? ]', () => {
 	const contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find({
 		foo: [
 			'bar',
@@ -219,8 +219,8 @@ test('top-level => object => array [ ?, ref, ?, ref, ?, ref, ? ]', () => {
 
 test('does not crash with undefined or null', () => {
 	const contractedRefs = makeContractionFinder({
-		isContracted,
-		isExpanded
+		isContraction,
+		isExpansion
 	}).find({
 		foo: [
 			undefined,
@@ -319,15 +319,15 @@ test('depth-limit', () => {
 
 	expect(
 		makeContractionFinder({
-			isContracted,
-			isExpanded
+			isContraction,
+			isExpansion
 		}).find(payload, { limit: 0 })
 	).toEqual([])
 
 	expect(
 		makeContractionFinder({
-			isContracted,
-			isExpanded
+			isContraction,
+			isExpansion
 		}).find(payload, { limit: 1 })
 	).toEqual([
 		[
@@ -358,8 +358,8 @@ test('depth-limit', () => {
 
 	expect(
 		makeContractionFinder({
-			isContracted,
-			isExpanded
+			isContraction,
+			isExpansion
 		}).find(payload, { limit: 2 })
 	).toEqual([
 		[
@@ -406,8 +406,8 @@ test('depth-limit', () => {
 
 	expect(
 		makeContractionFinder({
-			isContracted,
-			isExpanded
+			isContraction,
+			isExpansion
 		}).find(payload, { limit: 3 })
 	).toEqual([
 		[

@@ -1,6 +1,6 @@
 const { isEqual, setWith } = require('lodash')
 
-const makeExpander = ({ findContractions, getKey, limit: maxDepth, loader }) => {
+const makeExpander = ({ findContractions, getKey, limit, loader }) => {
 	const expand = async (input) => {
 		return await visit(input)
 
@@ -14,19 +14,19 @@ const makeExpander = ({ findContractions, getKey, limit: maxDepth, loader }) => 
 			try {
 				stack.push([node, key])
 
-				const limit = maxDepth - depth + 1
+				const delta = limit - depth + 1
 
-				if (limit <= 0) return
+				if (delta <= 0) return
 
-				const refs = findContractions(node, { limit })
+				const contractions = findContractions(node, { limit: delta })
 
 				await Promise.all(
-					refs.map(async ([path, ref, relativeDepth]) => {
-						const childKey = getKey(ref)
+					contractions.map(async ([path, contraction, relativeDepth]) => {
+						const childKey = getKey(contraction)
 
 						if (stack.find(([, stackKey]) => isEqual(stackKey, childKey))) return
 
-						const child = await loader(ref)
+						const child = await loader(contraction)
 
 						setWith(node, path, child, Object)
 
