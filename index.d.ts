@@ -22,7 +22,7 @@ type DefaultSetter = Omit<Setter, 'defaultSetter'>
 
 type ExpanderFactoryOptions = {
 	findContractions: <Input, Contraction>(input: Input, options: { limit: number }) => Contraction[]
-	getKey: <Something, Key>(something: Something) => Promise<Key>
+	getKey: <T, Key>(something: T) => Promise<Key>
 	limit: number
 	loader: <Contraction, Expansion>(contraction: Contraction) => Promise<Expansion>
 	setter?: Setter
