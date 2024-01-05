@@ -22,13 +22,14 @@
 	],
 	"license": "MIT",
 	"scripts": {
-		"build": "pnpm build:cjs && pnpm build:esm",
 		"build:cjs": "npx esbuild --sourcemap --outdir=dist --platform=node --format=cjs src/*.js",
 		"build:esm": "npx esbuild --sourcemap --out-extension:.js=.mjs --outdir=dist --platform=node --format=esm src/*.js",
+		"build": "pnpm build:cjs && pnpm build:esm",
 		"format": "prettier --write .",
 		"lint": "eslint . --fix",
-		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
-		"test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --coverage"
+		"prepublish": "pnpm test && pnpm build",
+		"test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --coverage",
+		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage"
 	},
 	"dependencies": {
 		"lodash-es": "^4.17.21"
