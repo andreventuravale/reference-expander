@@ -32,17 +32,9 @@ const makeExpander = ({ findContractions, getKey, limit, loader, setter = defaul
 
 						const expansion = await loader(contraction)
 
-						setter({
-							defaultSetter,
-							expansion,
-							path,
-							target
-						})
+						setter({ defaultSetter, expansion, path, target })
 
-						await visit(expansion, {
-							depth: depth + relativeDepth,
-							stack
-						})
+						await visit(expansion, { depth: depth + relativeDepth, stack })
 					})
 				)
 			} finally {
