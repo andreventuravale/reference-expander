@@ -6,7 +6,7 @@ module.exports = {
 		'jest/globals': true
 	},
 	extends: 'eslint:recommended',
-	ignorePatterns: ['dist'],
+	ignorePatterns: ['*.js', '*.mjs'],
 	overrides: [
 		{
 			env: {
