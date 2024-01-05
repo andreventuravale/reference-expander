@@ -10,18 +10,16 @@ const loader = async ({ type, id }) => {
 }
 
 const input = {
-	foo: {
-		posts: [
-			{
-				type: 'post',
-				id: '1'
-			},
-			{
-				type: 'post',
-				id: '2'
-			}
-		]
-	}
+	posts: [
+		{
+			type: 'post',
+			id: '1'
+		},
+		{
+			type: 'post',
+			id: '2'
+		}
+	]
 }
 
 const { find } = makeContractionFinder({
