@@ -28,7 +28,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build:cjs": "npx esbuild --bundle --sourcemap --outdir=. --platform=node --format=cjs src/index.js",
-		"build:esm": "npx esbuild --bundle --sourcemap --out-extension:.js=.mjs --outfile=esm.js --platform=node --format=esm src/index.js",
+		"build:esm": "npx esbuild --bundle --sourcemap --out-extension:.js=.mjs --outfile=esm.mjs --platform=node --format=esm src/index.js",
 		"build": "pnpm build:cjs && pnpm build:esm",
 		"format": "prettier --write .",
 		"lint": "eslint . --fix",
