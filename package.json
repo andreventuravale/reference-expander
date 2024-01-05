@@ -17,7 +17,7 @@
 		"reference expansion"
 	],
 	"license": "MIT",
-	"main": "dist/expander.js",
+	"main": "src/expander.js",
 	"peerDependencies": {
 		"lodash": "^4.17.21"
 	},

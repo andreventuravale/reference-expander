@@ -356,107 +356,107 @@ test('depth-limit', () => {
 		]
 	])
 
-	// expect(
-	// 	makeContractionFinder({
-	// 		isContracted,
-	// 		isExpanded
-	// 	}).find(payload, { limit: 2 })
-	// ).toEqual([
-	// 	[
-	// 		'ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: 'cc662bdb-d52b-48c2-b80f-370a493eb480'
-	// 		},
-	// 		1
-	// 	],
-	// 	[
-	// 		'a.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '0cbc95d6-4e6a-4244-9c95-e0646645aa33'
-	// 		},
-	// 		1
-	// 	],
-	// 	[
-	// 		'a.b.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '4753203e-8c24-4f1b-9ac2-5a10be93c421'
-	// 		},
-	// 		1
-	// 	],
-	// 	[
-	// 		'a.b.c.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '818720eb-9e83-448b-92d0-ab05d31dbf8c'
-	// 		},
-	// 		2
-	// 	],
-	// 	[
-	// 		'a.b.c.d.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '85aee8b1-1354-4ac1-a0e2-9af251140d64'
-	// 		},
-	// 		2
-	// 	]
-	// ])
+	expect(
+		makeContractionFinder({
+			isContracted,
+			isExpanded
+		}).find(payload, { limit: 2 })
+	).toEqual([
+		[
+			'ref',
+			{
+				_content_type_uid: 'bar',
+				uid: 'cc662bdb-d52b-48c2-b80f-370a493eb480'
+			},
+			1
+		],
+		[
+			'a.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '0cbc95d6-4e6a-4244-9c95-e0646645aa33'
+			},
+			1
+		],
+		[
+			'a.b.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '4753203e-8c24-4f1b-9ac2-5a10be93c421'
+			},
+			1
+		],
+		[
+			'a.b.c.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '818720eb-9e83-448b-92d0-ab05d31dbf8c'
+			},
+			2
+		],
+		[
+			'a.b.c.d.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '85aee8b1-1354-4ac1-a0e2-9af251140d64'
+			},
+			2
+		]
+	])
 
-	// expect(
-	// 	makeContractionFinder({
-	// 		isContracted,
-	// 		isExpanded
-	// 	}).find(payload, { limit: 3 })
-	// ).toEqual([
-	// 	[
-	// 		'ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: 'cc662bdb-d52b-48c2-b80f-370a493eb480'
-	// 		},
-	// 		1
-	// 	],
-	// 	[
-	// 		'a.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '0cbc95d6-4e6a-4244-9c95-e0646645aa33'
-	// 		},
-	// 		1
-	// 	],
-	// 	[
-	// 		'a.b.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '4753203e-8c24-4f1b-9ac2-5a10be93c421'
-	// 		},
-	// 		1
-	// 	],
-	// 	[
-	// 		'a.b.c.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '818720eb-9e83-448b-92d0-ab05d31dbf8c'
-	// 		},
-	// 		2
-	// 	],
-	// 	[
-	// 		'a.b.c.d.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '85aee8b1-1354-4ac1-a0e2-9af251140d64'
-	// 		},
-	// 		2
-	// 	],
-	// 	[
-	// 		'a.b.c.d.e.ref',
-	// 		{
-	// 			_content_type_uid: 'bar',
-	// 			uid: '4320e926-169d-4655-b557-f00234fa27f6'
-	// 		},
-	// 		3
-	// 	]
-	// ])
+	expect(
+		makeContractionFinder({
+			isContracted,
+			isExpanded
+		}).find(payload, { limit: 3 })
+	).toEqual([
+		[
+			'ref',
+			{
+				_content_type_uid: 'bar',
+				uid: 'cc662bdb-d52b-48c2-b80f-370a493eb480'
+			},
+			1
+		],
+		[
+			'a.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '0cbc95d6-4e6a-4244-9c95-e0646645aa33'
+			},
+			1
+		],
+		[
+			'a.b.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '4753203e-8c24-4f1b-9ac2-5a10be93c421'
+			},
+			1
+		],
+		[
+			'a.b.c.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '818720eb-9e83-448b-92d0-ab05d31dbf8c'
+			},
+			2
+		],
+		[
+			'a.b.c.d.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '85aee8b1-1354-4ac1-a0e2-9af251140d64'
+			},
+			2
+		],
+		[
+			'a.b.c.d.e.ref',
+			{
+				_content_type_uid: 'bar',
+				uid: '4320e926-169d-4655-b557-f00234fa27f6'
+			},
+			3
+		]
+	])
 })
