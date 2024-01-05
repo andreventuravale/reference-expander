@@ -1,7 +1,7 @@
-const { makeContractionFinder } = require('./contraction-finder')
-const { makeExpander } = require('./expander')
-const { z } = require('zod')
-const td = require('testdouble')
+import td from 'testdouble'
+import { z } from 'zod'
+import { makeContractionFinder } from '../contraction-finder'
+import { makeExpander } from '../expander'
 
 afterEach(() => {
 	td.reset()

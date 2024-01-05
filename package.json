@@ -1,14 +1,18 @@
 {
 	"name": "expander",
+	"type": "module",
 	"version": "0.0.1",
 	"description": "A reference expansion helper.",
 	"author": "andreventuravale <andreventuravale@gmail.com>",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"typings": "./dist/index.d.ts",
 	"devDependencies": {
+		"esbuild": "^0.19.11",
 		"eslint": "^8.56.0",
 		"eslint-plugin-jest": "^27.6.1",
 		"jest": "^29.7.0",
-		"lodash": "^4.17.21",
-		"node-fetch-cjs": "^3.3.2",
+		"node-fetch": "^3.3.2",
 		"prettier": "^3.1.1",
 		"testdouble": "^3.20.1",
 		"zod": "^3.22.4"
@@ -17,15 +21,16 @@
 		"reference expansion"
 	],
 	"license": "MIT",
-	"main": "index.js",
-	"types": "index.d.ts",
-	"peerDependencies": {
-		"lodash": "^4.17.21"
-	},
 	"scripts": {
+		"build": "pnpm build:cjs && pnpm build:esm",
+		"build:cjs": "npx esbuild --sourcemap --outdir=dist --platform=node --format=cjs src/*.js",
+		"build:esm": "npx esbuild --sourcemap --out-extension:.js=.mjs --outdir=dist --platform=node --format=esm src/*.js",
 		"format": "prettier --write .",
 		"lint": "eslint . --fix",
-		"test": "jest --coverage",
-		"test:watch": "jest --watch --coverage"
+		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
+		"test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --coverage"
+	},
+	"dependencies": {
+		"lodash-es": "^4.17.21"
 	}
 }

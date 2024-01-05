@@ -1,10 +1,16 @@
-const { isEqual, setWith } = require('lodash')
+import { isEqual, setWith } from 'lodash-es'
 
-const defaultSetter = ({ expansion, path, target }) => {
+export const defaultSetter = ({ expansion, path, target }) => {
 	setWith(target, path, expansion, Object)
 }
 
-const makeExpander = ({ findContractions, getKey, limit, loader, setter = defaultSetter }) => {
+export const makeExpander = ({
+	findContractions,
+	getKey,
+	limit,
+	loader,
+	setter = defaultSetter
+}) => {
 	const expand = async (input) => {
 		return await visit(input)
 
@@ -47,5 +53,3 @@ const makeExpander = ({ findContractions, getKey, limit, loader, setter = defaul
 		expand
 	}
 }
-
-exports.makeExpander = makeExpander

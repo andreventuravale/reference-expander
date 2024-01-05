@@ -1,7 +1,7 @@
-const { default: fetch } = require('node-fetch-cjs')
-const { inspect } = require('node:util')
-const { makeContractionFinder } = require('../src/contraction-finder')
-const { makeExpander } = require('../src/expander')
+import fetch from 'node-fetch'
+import { inspect } from 'node:util'
+import { makeContractionFinder } from '../src/contraction-finder.js'
+import { makeExpander } from '../src/expander.js'
 
 const loader = async ({ type, id }) => {
 	const response = await fetch(`https://jsonplaceholder.typicode.com/${type}s/${id}`)

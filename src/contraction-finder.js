@@ -1,6 +1,6 @@
-const { isArray, isObject, isPlainObject } = require('lodash')
+import { isArray, isObject, isPlainObject } from 'lodash-es'
 
-const makeContractionFinder = ({ isContraction, isExpansion }) => {
+export const makeContractionFinder = ({ isContraction, isExpansion }) => {
 	const find = function (input, { limit = 1 } = {}) {
 		const result = []
 
@@ -42,5 +42,3 @@ const makeContractionFinder = ({ isContraction, isExpansion }) => {
 		find
 	}
 }
-
-exports.makeContractionFinder = makeContractionFinder

@@ -1,7 +1,7 @@
-const { makeContractionFinder } = require('./contraction-finder')
-const { unset } = require('lodash')
-const { z } = require('zod')
-const td = require('testdouble')
+import { unset } from 'lodash-es'
+import td from 'testdouble'
+import { z } from 'zod'
+import { makeContractionFinder } from '../contraction-finder'
 
 afterEach(() => {
 	td.reset()
