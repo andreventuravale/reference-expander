@@ -1,6 +1,10 @@
 const { isEqual, setWith } = require('lodash')
 
-const makeExpander = ({ findContractions, getKey, limit, loader }) => {
+const defaultSetter = (node, path, child) => {
+	setWith(node, path, child, Object)
+}
+
+const makeExpander = ({ findContractions, getKey, limit, loader, setter = defaultSetter }) => {
 	const expand = async (input) => {
 		return await visit(input)
 
@@ -28,7 +32,7 @@ const makeExpander = ({ findContractions, getKey, limit, loader }) => {
 
 						const child = await loader(contraction)
 
-						setWith(node, path, child, Object)
+						setter(node, path, child)
 
 						await visit(child, {
 							depth: depth + relativeDepth,

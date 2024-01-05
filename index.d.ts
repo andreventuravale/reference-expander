@@ -18,6 +18,8 @@ type ExpanderFactoryOptions = {
 	limit: number
 
 	loader: <Contraction, Expansion>(contraction: Contraction) => Promise<Expansion>
+
+	setter?: <Target, Expansion>(target: Target, path: string, expansion: Expansion) => void
 }
 
 type Expander = { expand: <Input>(input: Input) => Promise<void> }
