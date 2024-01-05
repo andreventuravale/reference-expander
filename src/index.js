@@ -1,2 +1,2 @@
-export * from './src/contraction-finder'
-export * from './src/expander'
+export * from './contraction-finder'
+export * from './expander'
