@@ -10,13 +10,15 @@ type ContractionFinder = {
 type ContractionFinderFactory = (options: ContractionFinderFactoryOptions) => ContractionFinder
 
 type SetterOptions<Target, Expansion> = {
-	defaultSetter: Setter
+	defaultSetter: DefaultSetter
 	expansion: Expansion
 	path: string
 	target: Target
 }
 
 type Setter = <Target, Expansion>(options: SetterOptions<Target, Expansion>) => void
+
+type DefaultSetter = Omit<Setter, 'defaultSetter'>
 
 type ExpanderFactoryOptions = {
 	findContractions: <Input, Contraction>(input: Input, options: { limit: number }) => Contraction[]

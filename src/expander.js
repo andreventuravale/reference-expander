@@ -1,6 +1,6 @@
 const { isEqual, setWith } = require('lodash')
 
-const defaultSetter = ({ target, path, expansion }) => {
+const defaultSetter = ({ expansion, path, target }) => {
 	setWith(target, path, expansion, Object)
 }
 
@@ -8,33 +8,38 @@ const makeExpander = ({ findContractions, getKey, limit, loader, setter = defaul
 	const expand = async (input) => {
 		return await visit(input)
 
-		async function visit(node, { depth = 1, stack = [] } = {}) {
-			if (!node) return
+		async function visit(target, { depth = 1, stack = [] } = {}) {
+			if (!target) return
 
-			if (stack.find(([stackNode]) => Object.is(stackNode, node))) return
+			if (stack.find(([stackNode]) => Object.is(stackNode, target))) return
 
-			const key = getKey(node)
+			const key = getKey(target)
 
 			try {
-				stack.push([node, key])
+				stack.push([target, key])
 
 				const delta = limit - depth + 1
 
 				if (delta <= 0) return
 
-				const contractions = findContractions(node, { limit: delta })
+				const contractions = findContractions(target, { limit: delta })
 
 				await Promise.all(
 					contractions.map(async ([path, contraction, relativeDepth]) => {
-						const childKey = getKey(contraction)
+						const expansionKey = getKey(contraction)
 
-						if (stack.find(([, stackKey]) => isEqual(stackKey, childKey))) return
+						if (stack.find(([, stackKey]) => isEqual(stackKey, expansionKey))) return
 
-						const child = await loader(contraction)
+						const expansion = await loader(contraction)
 
-						setter({ target: node, path, expansion: child, defaultSetter })
+						setter({
+							defaultSetter,
+							expansion,
+							path,
+							target
+						})
 
-						await visit(child, {
+						await visit(expansion, {
 							depth: depth + relativeDepth,
 							stack
 						})
