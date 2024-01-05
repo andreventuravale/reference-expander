@@ -1,5 +1,5 @@
 {
-	"name": "node-expander",
+	"name": "reference-expander",
 	"type": "module",
 	"version": "0.0.1",
 	"description": "A reference expansion helper.",
