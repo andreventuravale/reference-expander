@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^3.1.1
     version: 3.1.1
   self:
-    specifier: npm:reference-expander@^0.0.6
-    version: /reference-expander@0.0.6
+    specifier: npm:reference-expander@^0.0.7
+    version: /reference-expander@0.0.7
   testdouble:
     specifier: ^3.20.1
     version: 3.20.1
@@ -2843,8 +2843,8 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
 
-  /reference-expander@0.0.6:
-    resolution: {integrity: sha512-OE8f/J8Aoi5h9Ngtuxmlw0mPVO3bubEux1nbzQ3EgbahFdQZ8W+s8Gam1dcKgsjDmZZmkf1mGiMSgObG9arzbQ==}
+  /reference-expander@0.0.7:
+    resolution: {integrity: sha512-duTaFiBDtU9M5Fx4qjlDGMfKliz85wtGX8XqjCUi0RbFgZQRx3LUKrw8T+egmQ+XvTZzlqkwR2/1UJvPCLxBTQ==}
     dependencies:
       lodash-es: 4.17.21
     dev: true
