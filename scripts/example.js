@@ -1,7 +1,6 @@
 import fetch from 'node-fetch'
 import { inspect } from 'node:util'
-import { makeContractionFinder } from '../src/contraction-finder.js'
-import { makeExpander } from '../src/expander.js'
+import { makeContractionFinder, makeExpander } from 'self'
 
 const loader = async ({ type, id }) => {
 	const response = await fetch(`https://jsonplaceholder.typicode.com/${type}s/${id}`)
