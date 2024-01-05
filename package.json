@@ -27,7 +27,7 @@
 		"build": "pnpm build:cjs && pnpm build:esm",
 		"format": "prettier --write .",
 		"lint": "eslint . --fix",
-		"prepublish": "pnpm test && pnpm build",
+		"prepublish": "pnpm lint && pnpm format && pnpm test && pnpm build",
 		"test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --coverage",
 		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage"
 	},

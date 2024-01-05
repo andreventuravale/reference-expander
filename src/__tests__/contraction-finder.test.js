@@ -1,5 +1,5 @@
 import { unset } from 'lodash-es'
-import td from 'testdouble'
+import * as td from 'testdouble'
 import { z } from 'zod'
 import { makeContractionFinder } from '../contraction-finder'
 

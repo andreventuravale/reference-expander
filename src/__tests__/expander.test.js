@@ -1,4 +1,4 @@
-import td from 'testdouble'
+import * as td from 'testdouble'
 import { z } from 'zod'
 import { makeContractionFinder } from '../contraction-finder'
 import { makeExpander } from '../expander'
