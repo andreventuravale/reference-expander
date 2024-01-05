@@ -17,6 +17,9 @@ devDependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  node-fetch-cjs:
+    specifier: ^3.3.2
+    version: 3.3.2
   prettier:
     specifier: ^3.1.1
     version: 3.1.1
@@ -3195,6 +3198,14 @@ packages:
       {
         integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
       }
+    dev: true
+
+  /node-fetch-cjs@3.3.2:
+    resolution:
+      {
+        integrity: sha512-JvvyTiDcLnHvPmbxj6uxj4LaamCfZLlzlRNBZp+H82ECMLz4OQjI9Jc6YjjjycipeMk1Aq4xo90ejEUMKJeTjw==
+      }
+    engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
     dev: true
 
   /node-int64@0.4.0:
