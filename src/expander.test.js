@@ -211,3 +211,48 @@ test('avoid cycles ( if the same input appears again )', async () => {
 
 	await td.verify(await loader({ _content_type_uid: 'bar', uid: '0' }), { times: 0 })
 })
+
+test('custom setter', async () => {
+	const loader = td.func()
+
+	const input = {
+		uid: '0',
+		foo: {
+			bar: {
+				ref: {
+					_content_type_uid: 'bar',
+					uid: '1'
+				}
+			}
+		}
+	}
+
+	await td
+		.when(await loader({ _content_type_uid: 'bar', uid: '1' }))
+		.thenResolve({ uid: '1', foo: 'bar' })
+
+	await makeExpander({
+		findContractions,
+		getKey,
+		limit: 10,
+		loader,
+		setter: (target, path, expansion, defaultSetter) =>
+			defaultSetter(target, `${path}.obj`, expansion, defaultSetter)
+	}).expand(input)
+
+	expect(input).toEqual({
+		foo: {
+			bar: {
+				ref: {
+					_content_type_uid: 'bar',
+					obj: {
+						foo: 'bar',
+						uid: '1'
+					},
+					uid: '1'
+				}
+			}
+		},
+		uid: '0'
+	})
+})

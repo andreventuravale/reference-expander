@@ -17,7 +17,8 @@
 		"reference expansion"
 	],
 	"license": "MIT",
-	"main": "src/expander.js",
+	"main": "index.js",
+	"types": "index.d.ts",
 	"peerDependencies": {
 		"lodash": "^4.17.21"
 	},

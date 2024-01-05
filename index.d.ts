@@ -10,6 +10,13 @@ type ContractionFinder = {
 
 type ContractionFinderFactory = (options: ContractionFinderFactoryOptions) => ContractionFinder
 
+type Setter = <Target, Expansion>(
+	target: Target,
+	path: string,
+	expansion: Expansion,
+	defaultSetter: Setter
+) => void
+
 type ExpanderFactoryOptions = {
 	findContractions: <Input, Contraction>(input: Input, options: { limit: number }) => Contraction[]
 
@@ -19,7 +26,7 @@ type ExpanderFactoryOptions = {
 
 	loader: <Contraction, Expansion>(contraction: Contraction) => Promise<Expansion>
 
-	setter?: <Target, Expansion>(target: Target, path: string, expansion: Expansion) => void
+	setter?: Setter
 }
 
 type Expander = { expand: <Input>(input: Input) => Promise<void> }
