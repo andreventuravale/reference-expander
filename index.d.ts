@@ -1,6 +1,5 @@
 type ContractionFinderFactoryOptions = {
 	isContraction: <T>(something: T) => boolean
-
 	isExpansion: <T>(something: T) => boolean
 }
 
@@ -21,13 +20,9 @@ type Setter = <Target, Expansion>(options: SetterOptions<Target, Expansion>) => 
 
 type ExpanderFactoryOptions = {
 	findContractions: <Input, Contraction>(input: Input, options: { limit: number }) => Contraction[]
-
 	getKey: <Something, Key>(something: Something) => Promise<Key>
-
 	limit: number
-
 	loader: <Contraction, Expansion>(contraction: Contraction) => Promise<Expansion>
-
 	setter?: Setter
 }
 
