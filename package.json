@@ -5,7 +5,7 @@
 	"description": "A reference expansion helper.",
 	"author": "andreventuravale <andreventuravale@gmail.com>",
 	"main": "./index.js",
-	"module": "./index.mjs",
+	"module": "./esm.mjs",
 	"typings": "./index.d.ts",
 	"devDependencies": {
 		"esbuild": "^0.19.11",
